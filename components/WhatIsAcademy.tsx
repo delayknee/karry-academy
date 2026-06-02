@@ -76,10 +76,10 @@ export function WhatIsAcademy() {
           </div>
           <div className="border-t border-ow-line1 px-5 py-5">
             <div className="font-display text-xl font-semibold tracking-[-0.02em] text-ow-fg1">
-              Meet Coach Kajor
+              What is The Karry Academy?
             </div>
             <div className="mt-1 font-hud text-[11px] text-ow-fg3">
-              3 min watch · free
+              1 min watch
             </div>
           </div>
         </Reveal>
