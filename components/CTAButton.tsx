@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { cn, WHOP_URL } from "@/lib/utils";
+import { trackCtaClick } from "@/lib/analytics";
 
 type Props = {
   href?: string;
@@ -7,6 +10,8 @@ type Props = {
   className?: string;
   size?: "sm" | "md" | "lg";
   variant?: "primary" | "secondary";
+  /** Where on the page this CTA lives — sent to GA as the event location. */
+  location?: string;
 };
 
 export function CTAButton({
@@ -15,6 +20,7 @@ export function CTAButton({
   className,
   size = "md",
   variant = "primary",
+  location = "unknown",
 }: Props) {
   const sizes = {
     sm: "h-9 rounded-[6px] px-4 text-[12.5px] gap-2.5",
@@ -32,6 +38,7 @@ export function CTAButton({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackCtaClick(location)}
       className={cn(
         "btn-flat group inline-flex select-none items-center justify-center whitespace-nowrap font-display font-semibold tabular-nums outline-none",
         sizes[size],

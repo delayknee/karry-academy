@@ -1,7 +1,10 @@
 import type { Metadata, Viewport } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
-const siteUrl = "https://karry-academy.vercel.app";
+const GA_MEASUREMENT_ID = "G-QTLYVJZH01";
+
+const siteUrl = "https://karryacademy.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -75,6 +78,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body>{children}</body>
+      <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
     </html>
   );
 }

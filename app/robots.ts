@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://karry-academy.vercel.app/sitemap.xml",
+    sitemap: "https://karryacademy.com/sitemap.xml",
   };
 }

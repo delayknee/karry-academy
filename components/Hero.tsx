@@ -55,7 +55,7 @@ export function Hero() {
 
         {/* CTA */}
         <div className="mt-10 animate-fadeUp [animation-delay:540ms]">
-          <CTAButton size="lg" />
+          <CTAButton size="lg" location="hero" />
         </div>
         <p className="mt-4 animate-fadeUp font-hud text-[11px] text-ow-fg3 [animation-delay:600ms]">
           Cancel anytime · Full refund if unsatisfied

@@ -208,7 +208,7 @@ export function TrustedBy() {
         </div>
 
         <Reveal delay={80} className="mt-14 flex justify-center">
-          <CTAButton size="lg" />
+          <CTAButton size="lg" location="trusted_by" />
         </Reveal>
       </div>
     </section>

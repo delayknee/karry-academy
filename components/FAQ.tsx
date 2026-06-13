@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { trackFaqOpen } from "@/lib/analytics";
 import { SectionMarker } from "./SectionMarker";
 import { Reveal } from "./Reveal";
 
@@ -48,7 +49,10 @@ export function FAQ() {
             <Reveal key={i} delay={120 + i * 60} className="border-t border-ow-line1">
               <button
                 type="button"
-                onClick={() => setOpen(isOpen ? -1 : i)}
+                onClick={() => {
+                  if (!isOpen) trackFaqOpen(f.q);
+                  setOpen(isOpen ? -1 : i);
+                }}
                 aria-expanded={isOpen}
                 aria-controls={`faq-panel-${i}`}
                 id={`faq-trigger-${i}`}

@@ -131,7 +131,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-2.5">
           <ThemeToggle />
-          <CTAButton size="sm">Get Access</CTAButton>
+          <CTAButton size="sm" location="nav">Get Access</CTAButton>
         </div>
       </div>
     </header>

@@ -16,7 +16,7 @@ const jsonLd = {
   provider: {
     "@type": "Organization",
     name: "Karry Academy",
-    sameAs: "https://karry-academy.vercel.app",
+    sameAs: "https://karryacademy.com",
   },
   offers: {
     "@type": "Offer",

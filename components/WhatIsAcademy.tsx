@@ -5,6 +5,7 @@ import { Play } from "lucide-react";
 import { CTAButton } from "./CTAButton";
 import { SectionMarker } from "./SectionMarker";
 import { Reveal } from "./Reveal";
+import { trackVideoPlay } from "@/lib/analytics";
 
 const YOUTUBE_ID = "Zn7aRS9AmKw";
 
@@ -27,7 +28,7 @@ export function WhatIsAcademy() {
             access to a <span className="text-ow-orange">top coach</span>.
           </Reveal>
           <Reveal delay={160} className="mt-10">
-            <CTAButton size="lg" />
+            <CTAButton size="lg" location="about" />
           </Reveal>
         </div>
 
@@ -56,7 +57,10 @@ export function WhatIsAcademy() {
 
                 <button
                   type="button"
-                  onClick={() => setPlaying(true)}
+                  onClick={() => {
+                    trackVideoPlay();
+                    setPlaying(true);
+                  }}
                   aria-label="Play intro video"
                   className="group relative flex h-[88px] w-[88px] items-center justify-center rounded-full text-[#0B1220] outline-none transition-transform duration-200 ease-smooth active:scale-[0.97]"
                 >
