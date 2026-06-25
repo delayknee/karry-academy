@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { CookieConsent } from "@/components/CookieConsent";
 import "./globals.css";
-
-const GA_MEASUREMENT_ID = "G-QTLYVJZH01";
 
 const siteUrl = "https://karryacademy.com";
 
@@ -77,8 +75,10 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body>{children}</body>
-      <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
+      <body>
+        {children}
+        <CookieConsent />
+      </body>
     </html>
   );
 }
