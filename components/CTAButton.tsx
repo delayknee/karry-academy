@@ -40,7 +40,7 @@ export function CTAButton({
       rel="noopener noreferrer"
       onClick={() => trackCtaClick(location)}
       className={cn(
-        "btn-flat group inline-flex select-none items-center justify-center whitespace-nowrap font-display font-semibold tabular-nums outline-none",
+        "btn-flat btn-skew group inline-flex select-none items-center justify-center whitespace-nowrap font-display font-semibold tabular-nums outline-none",
         sizes[size],
         variants[variant],
         className,

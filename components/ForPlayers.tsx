@@ -1,4 +1,5 @@
 import { Brain, Swords, Target, X } from "lucide-react";
+import { HudCorners } from "./HudCorners";
 import { SectionMarker } from "./SectionMarker";
 import { Reveal } from "./Reveal";
 
@@ -48,8 +49,9 @@ export function ForPlayers() {
             key={title}
             delay={120 + i * 80}
             y={18}
-            className="group rounded-ow-1 border border-ow-line2 bg-ow-bg2 p-8 shadow-[0_1px_2px_rgba(11,18,32,0.04)] transition-[transform,border-color,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:border-ow-orange hover:shadow-[0_22px_48px_-22px_rgba(249,158,26,0.45)]"
+            className="group relative rounded-ow-1 border border-ow-line2 bg-ow-bg2 p-8 shadow-[0_1px_2px_rgba(11,18,32,0.04)] transition-[transform,border-color,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:border-ow-orange hover:shadow-[0_22px_48px_-22px_rgba(249,158,26,0.45)]"
           >
+            <HudCorners />
             <div className="mb-6 flex items-center justify-between">
               <div className="flex h-12 w-12 items-center justify-center rounded-ow-1 border border-ow-orange/30 bg-ow-orange/[0.08] text-ow-orange transition-[transform,border-color] duration-300 ease-out group-hover:-translate-y-0.5 group-hover:border-ow-orange/60">
                 <Icon className="h-6 w-6 transition-transform duration-300 ease-out group-hover:scale-110" strokeWidth={1.75} />

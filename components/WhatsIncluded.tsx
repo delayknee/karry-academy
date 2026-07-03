@@ -1,6 +1,7 @@
 import { Compass, Crosshair, ShieldCheck, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CTAButton } from "./CTAButton";
+import { HudCorners } from "./HudCorners";
 import { SectionMarker } from "./SectionMarker";
 import { Reveal } from "./Reveal";
 
@@ -111,14 +112,7 @@ export function WhatsIncluded() {
                 : "border-ow-line2 shadow-[0_1px_2px_rgba(11,18,32,0.04)] hover:border-ow-orange hover:shadow-[0_22px_48px_-22px_rgba(249,158,26,0.45)]",
             )}
           >
-            {featured && (
-              <>
-                <span aria-hidden className="absolute -left-px -top-px h-3 w-3 border-l-2 border-t-2 border-ow-orange" />
-                <span aria-hidden className="absolute -right-px -top-px h-3 w-3 border-r-2 border-t-2 border-ow-orange" />
-                <span aria-hidden className="absolute -bottom-px -left-px h-3 w-3 border-b-2 border-l-2 border-ow-orange" />
-                <span aria-hidden className="absolute -bottom-px -right-px h-3 w-3 border-b-2 border-r-2 border-ow-orange" />
-              </>
-            )}
+            <HudCorners visible={featured} />
             <div className="mb-6 flex items-center justify-between">
               <div
                 className={cn(

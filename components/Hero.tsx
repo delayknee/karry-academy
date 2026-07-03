@@ -1,3 +1,4 @@
+import { CountUp } from "./CountUp";
 import { CTAButton } from "./CTAButton";
 
 export function Hero() {
@@ -25,7 +26,7 @@ export function Hero() {
       <div className="relative mx-auto flex w-full max-w-[1280px] flex-col items-center px-6 py-16 text-center lg:px-12">
         {/* Badge */}
         <div className="mb-8 animate-fadeUp [animation-delay:60ms]">
-          <div className="inline-flex animate-borderPulse items-center gap-2.5 rounded-ow-1 border border-ow-cyan/45 bg-ow-cyan/[0.05] px-3 py-[7px] font-hud text-[11px] tracking-[0.18em] text-ow-cyan">
+          <div className="ow-chip inline-flex animate-borderPulse items-center gap-2.5 rounded-ow-1 border border-ow-cyan/45 bg-ow-cyan/[0.05] px-3.5 py-[7px] font-hud text-[11px] tracking-[0.18em] text-ow-cyan">
             <span className="relative inline-flex h-1.5 w-1.5 items-center justify-center">
               <span className="absolute inset-0 animate-ping rounded-full bg-ow-cyan opacity-60" />
               <span className="relative h-1.5 w-1.5 animate-pulseSoft rounded-full bg-ow-cyan shadow-cyanGlow" />
@@ -57,11 +58,11 @@ export function Hero() {
 
         {/* Highlights */}
         <div className="mt-10 flex w-full max-w-[640px] animate-fadeUp items-stretch [animation-delay:420ms]">
-          <Stat value="1,000+" label="Students taught" />
+          <Stat value={<CountUp to={1000} />} label="Students taught" />
           <StatDivider />
-          <Stat value="5,000+" label="Hours played" />
+          <Stat value={<CountUp to={5000} />} label="Hours played" />
           <StatDivider />
-          <Stat value="12+" label="Live events / month" />
+          <Stat value={<CountUp to={12} delay={900} duration={1000} />} label="Live events / month" />
         </div>
 
         {/* CTA */}
@@ -76,7 +77,7 @@ export function Hero() {
   );
 }
 
-function Stat({ value, label }: { value: string; label: string }) {
+function Stat({ value, label }: { value: React.ReactNode; label: string }) {
   return (
     <div className="flex flex-1 flex-col items-center gap-1.5">
       <div className="font-display text-[32px] font-semibold leading-none tracking-[-0.03em] tabular-nums text-ow-fg1">

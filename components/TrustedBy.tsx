@@ -1,5 +1,6 @@
 import { TrendingUp } from "lucide-react";
 import { CTAButton } from "./CTAButton";
+import { HudCorners } from "./HudCorners";
 import { SectionMarker } from "./SectionMarker";
 import { Reveal } from "./Reveal";
 
@@ -118,6 +119,52 @@ function tierVars(tier: TierStyle) {
   } as React.CSSProperties;
 }
 
+function FeaturedMessage({ m }: { m: Msg }) {
+  const tier = TIER_STYLES[m.color] ?? FALLBACK_TIER;
+  return (
+    <div className="group relative rounded-ow-1 border border-ow-orange/40 bg-ow-bg2 p-6 shadow-[0_16px_48px_-24px_rgba(249,158,26,0.4)] lg:p-8">
+      <HudCorners visible />
+      <div className="flex flex-wrap items-center gap-4">
+        <div
+          className="tier-avatar flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full font-display text-xl font-semibold"
+          style={tierVars(tier)}
+        >
+          {m.initial}
+        </div>
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-baseline gap-x-2.5">
+            <span className="text-base font-semibold text-ow-fg1">
+              {m.name}
+            </span>
+            <span className="font-hud text-[10px] text-ow-fg4">{m.ts}</span>
+          </div>
+          {m.gain && (
+            <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
+              <span
+                className="tier-avatar inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[12px] font-semibold"
+                style={tierVars(tier)}
+              >
+                <TrendingUp className="h-3.5 w-3.5" strokeWidth={2.5} />
+                {m.gain.from
+                  ? `${m.gain.from} → ${m.gain.to}`
+                  : `Hit ${m.gain.to}`}
+              </span>
+              {m.gain.tiers && (
+                <span className="inline-flex items-center rounded-full border border-ow-orange/40 bg-ow-orange/[0.08] px-3 py-1 font-hud text-[10px] text-ow-orange">
+                  +{m.gain.tiers} {m.gain.tiers === 1 ? "tier" : "tiers"}
+                </span>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+      <p className="mt-5 max-w-[880px] text-[17px] leading-[1.6] text-ow-fg1 lg:text-[19px]">
+        &ldquo;{m.body}&rdquo;
+      </p>
+    </div>
+  );
+}
+
 function Message({ m, index }: { m: Msg; index: number }) {
   const tier = TIER_STYLES[m.color] ?? FALLBACK_TIER;
   return (
@@ -182,15 +229,19 @@ export function TrustedBy() {
           — here is what happens when theory finally turns into wins.
         </Reveal>
 
+        <Reveal y={14} className="mb-8">
+          <FeaturedMessage m={messages[0]} />
+        </Reveal>
+
         <div className="columns-1 gap-3.5 sm:columns-2 lg:columns-3">
-          {messages.map((m, i) => (
+          {messages.slice(1).map((m, i) => (
             <Reveal
               key={m.name}
               delay={Math.min(i, 9) * 40}
               y={10}
               className="mb-3.5 break-inside-avoid"
             >
-              <Message m={m} index={i} />
+              <Message m={m} index={i + 1} />
             </Reveal>
           ))}
         </div>

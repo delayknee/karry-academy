@@ -289,6 +289,15 @@ textarea::selection {
   transform: skewX(10deg);
 }
 
+/* Skewed CTA — keeps content upright; :active composes skew + scale */
+.btn-skew {
+  --btn-skew: -8deg;
+  transform: skewX(var(--btn-skew));
+}
+.btn-skew > * {
+  transform: skewX(calc(var(--btn-skew) * -1));
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(var(--reveal-y, 14px));
@@ -389,7 +398,7 @@ textarea::selection {
   }
 }
 .btn-flat:active {
-  transform: scale(0.97);
+  transform: skewX(var(--btn-skew, 0deg)) scale(0.97);
   transition-duration: 70ms;
   box-shadow: var(--btn-shadow-active);
 }
@@ -573,7 +582,10 @@ textarea::selection {
       box-shadow 200ms var(--ease-out-strong) !important;
   }
 
-  .btn-flat:active,
+  .btn-flat:active {
+    transform: skewX(var(--btn-skew, 0deg));
+  }
+
   .btn-hud:active,
   .btn-ghost:active,
   .btn-glow:active {
