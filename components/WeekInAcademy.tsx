@@ -55,8 +55,8 @@ export function WeekInAcademy() {
             className="group grid grid-cols-[88px_1fr] items-center gap-6 border-t border-ow-line1 py-6 sm:grid-cols-[140px_48px_1fr] sm:gap-8 lg:grid-cols-[180px_48px_1fr] lg:gap-12"
           >
             <div>
-              <span className="inline-flex items-center gap-2 rounded-ow-1 border border-ow-orange/40 bg-ow-orange/[0.06] px-2.5 py-[5px] font-hud text-[11px] text-ow-orange">
-                {day}
+              <span className="ow-chip inline-flex items-center rounded-ow-1 border border-ow-orange/40 bg-ow-orange/[0.06] px-3 py-[5px] font-hud text-[11px] text-ow-orange">
+                <span>{day}</span>
               </span>
             </div>
             <div className="hidden h-12 w-12 items-center justify-center rounded-ow-1 border border-ow-orange/30 bg-ow-orange/[0.08] text-ow-orange transition-[border-color] duration-200 ease-smooth group-hover:border-ow-orange/60 sm:flex">
@@ -68,7 +68,7 @@ export function WeekInAcademy() {
                   {title}
                 </span>
                 <span className="hidden items-center gap-1.5 font-hud text-[9px] text-ow-fg4 sm:inline-flex">
-                  <span className="h-1.5 w-1.5 rounded-full bg-ow-orange/70" />
+                  <span className="h-1.5 w-1.5 animate-pulseSoft rounded-full bg-ow-orange/70" />
                   {alwaysOn ? "24/7" : "Recorded"}
                 </span>
               </div>

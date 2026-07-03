@@ -264,6 +264,31 @@ textarea::selection {
   color: var(--selection-fg);
 }
 
+/* Drifting aurora blobs — hero ambient motion */
+@keyframes blobDriftA {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(70px, -50px) scale(1.12); }
+}
+@keyframes blobDriftB {
+  0%, 100% { transform: translate(0, 0) scale(1.08); }
+  50% { transform: translate(-80px, 40px) scale(1); }
+}
+.blob-a {
+  animation: blobDriftA 16s ease-in-out infinite;
+}
+.blob-b {
+  animation: blobDriftB 21s ease-in-out infinite;
+}
+
+/* Overwatch-style skewed chip — counter-skew the inner label */
+.ow-chip {
+  transform: skewX(-10deg);
+}
+.ow-chip > * {
+  display: inline-block;
+  transform: skewX(10deg);
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(var(--reveal-y, 14px));

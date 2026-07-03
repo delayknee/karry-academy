@@ -11,6 +11,16 @@ export function Hero() {
         aria-hidden
       />
 
+      {/* Drifting ambient blobs */}
+      <div
+        aria-hidden
+        className="blob-a pointer-events-none absolute left-[12%] top-[18%] h-[340px] w-[340px] rounded-full bg-ow-orange/20 blur-[110px]"
+      />
+      <div
+        aria-hidden
+        className="blob-b pointer-events-none absolute bottom-[10%] right-[10%] h-[300px] w-[300px] rounded-full bg-ow-cyan/15 blur-[110px]"
+      />
+
       {/* Content */}
       <div className="relative mx-auto flex w-full max-w-[1280px] flex-col items-center px-6 py-16 text-center lg:px-12">
         {/* Badge */}
