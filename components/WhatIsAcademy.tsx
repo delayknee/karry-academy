@@ -23,9 +23,17 @@ export function WhatIsAcademy() {
 
       <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
         <div>
-          <Reveal as="h2" delay={60} className="max-w-[520px] font-display text-[44px] font-bold leading-none tracking-[-0.035em] text-ow-fg1 lg:text-[64px]">
-            A private community with live weekly classes, coaching VODs and
-            access to a <span className="text-ow-orange">top coach</span>.
+          <Reveal as="h2" delay={60} className="max-w-[560px] font-display text-[36px] font-bold leading-[1.02] tracking-[-0.035em] text-ow-fg1 lg:text-[48px]">
+            A live, collaborative community built specifically for{" "}
+            <span className="text-ow-orange">analytical players</span> who want
+            to understand Overwatch at a deeper level.
+          </Reveal>
+          <Reveal as="p" delay={120} className="mt-6 max-w-[520px] text-[17px] leading-[1.6] text-ow-fg2">
+            Every week, we take advanced game theory and transform it into{" "}
+            <strong className="font-semibold text-ow-fg1">
+              actionable ranked blueprints
+            </strong>
+            .
           </Reveal>
           <Reveal delay={160} className="mt-10">
             <CTAButton size="lg" location="about" />

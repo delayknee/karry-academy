@@ -36,9 +36,9 @@
   --bg-3-rgb: 237 241 245;
 
   /* Lines */
-  --line-1: rgba(11, 18, 32, 0.06);
-  --line-2: rgba(11, 18, 32, 0.10);
-  --line-3: #E2E6EC;
+  --line-1: rgba(11, 18, 32, 0.08);
+  --line-2: rgba(11, 18, 32, 0.14);
+  --line-3: #D8DEE6;
 
   /* Foreground */
   --fg-0: #0B1220;
@@ -63,11 +63,11 @@
   --texture-stroke: rgba(11, 18, 32, 0.022);
   --aurora-bg:
     radial-gradient(ellipse 100% 90% at 50% 50%, transparent 50%, rgba(250, 251, 252, 0.85) 100%),
-    radial-gradient(ellipse 55% 42% at 50% 58%, rgba(249, 158, 26, 0.16), transparent 72%),
-    radial-gradient(ellipse 30% 26% at 34% 30%, rgba(249, 158, 26, 0.10), transparent 78%),
-    radial-gradient(ellipse 36% 30% at 70% 66%, rgba(255, 179, 64, 0.10), transparent 78%),
-    radial-gradient(ellipse 28% 50% at 10% 78%, rgba(37, 99, 235, 0.10), transparent 72%),
-    radial-gradient(ellipse 24% 42% at 90% 20%, rgba(37, 99, 235, 0.08), transparent 72%);
+    radial-gradient(ellipse 55% 42% at 50% 58%, rgba(249, 158, 26, 0.28), transparent 72%),
+    radial-gradient(ellipse 30% 26% at 34% 30%, rgba(249, 158, 26, 0.18), transparent 78%),
+    radial-gradient(ellipse 36% 30% at 70% 66%, rgba(255, 179, 64, 0.18), transparent 78%),
+    radial-gradient(ellipse 28% 50% at 10% 78%, rgba(37, 99, 235, 0.14), transparent 72%),
+    radial-gradient(ellipse 24% 42% at 90% 20%, rgba(37, 99, 235, 0.12), transparent 72%);
 
   /* Button shadow tuning per theme */
   --btn-shadow-rest:

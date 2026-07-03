@@ -25,32 +25,33 @@ export function Hero() {
         </div>
 
         {/* Headline */}
-        <h1 className="animate-fadeUp font-display text-[clamp(60px,9vw,132px)] font-bold leading-[0.92] tracking-[-0.045em] text-ow-fg1 [animation-delay:180ms]">
-          Improve in Overwatch
+        <h1 className="animate-fadeUp font-display text-[clamp(44px,7vw,104px)] font-bold leading-[0.95] tracking-[-0.045em] text-ow-fg1 [animation-delay:180ms]">
+          Stop guessing.
           <br />
-          <span className="text-ow-orange">with Kajor.</span>
+          Learn what really works
+          <br />
+          <span className="text-ow-orange">&amp; finally improve.</span>
         </h1>
 
         {/* Sub paragraph */}
         <p className="mt-8 max-w-[720px] animate-fadeUp text-[17px] leading-[1.6] text-ow-fg2 [animation-delay:300ms]">
-          A top 1% coach with over{" "}
+          Join <strong className="font-semibold text-ow-fg1">Kajor</strong> and
+          a community of dedicated players for{" "}
           <strong className="font-semibold text-ow-fg1">
-            1,000 students taught
-          </strong>{" "}
-          and{" "}
-          <strong className="font-semibold text-ow-fg1">
-            5,000+ hours played
+            live VOD reviews
           </strong>
-          .
+          , <strong className="font-semibold text-ow-fg1">group classes</strong>
+          , and the structure you need to fix bad habits and reach your goal
+          rank.
         </p>
 
         {/* Highlights */}
         <div className="mt-10 flex w-full max-w-[640px] animate-fadeUp items-stretch [animation-delay:420ms]">
-          <Stat value="Private" label="Community" />
+          <Stat value="1,000+" label="Students taught" />
           <StatDivider />
-          <Stat value="Live" label="Lessons" />
+          <Stat value="5,000+" label="Hours played" />
           <StatDivider />
-          <Stat value="Direct" label="Access to Kajor" />
+          <Stat value="12+" label="Live events / month" />
         </div>
 
         {/* CTA */}

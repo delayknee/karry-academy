@@ -16,7 +16,7 @@ type Props = {
 
 export function CTAButton({
   href = WHOP_URL,
-  children = "Get Access for $14.99/Month",
+  children = "Claim Access for $14.99/month",
   className,
   size = "md",
   variant = "primary",

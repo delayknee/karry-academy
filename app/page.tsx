@@ -1,10 +1,13 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { WhatIsAcademy } from "@/components/WhatIsAcademy";
+import { WhyRanked } from "@/components/WhyRanked";
 import { ForPlayers } from "@/components/ForPlayers";
 import { WhatsIncluded } from "@/components/WhatsIncluded";
+import { WeekInAcademy } from "@/components/WeekInAcademy";
 import { TrustedBy } from "@/components/TrustedBy";
 import { FAQ } from "@/components/FAQ";
+import { FinalCTA } from "@/components/FinalCTA";
 import { Footer } from "@/components/Footer";
 
 const jsonLd = {
@@ -37,10 +40,13 @@ export default function Home() {
       <main>
         <Hero />
         <WhatIsAcademy />
-        <ForPlayers />
+        <WhyRanked />
         <WhatsIncluded />
+        <ForPlayers />
+        <WeekInAcademy />
         <TrustedBy />
         <FAQ />
+        <FinalCTA />
       </main>
       <Footer />
     </>
