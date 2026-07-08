@@ -1,60 +1,38 @@
 import { MonitorPlay, Ticket, Dumbbell, Gamepad2, MessagesSquare } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { HudCorners } from "./HudCorners";
 import { SectionMarker } from "./SectionMarker";
 import { Reveal } from "./Reveal";
 
-type Event = {
-  Icon: typeof MonitorPlay;
-  title: string;
-  body: string;
-};
-
-const week: { day: string; short: string; event?: Event }[] = [
-  { day: "Monday", short: "Mon" },
+const events = [
   {
     day: "Tuesday",
-    short: "Tue",
-    event: {
-      Icon: MonitorPlay,
-      title: "Rapid Replay Review Clinic",
-      body: "Fast-paced VOD clinic — one massive, high-impact insight per student replay.",
-    },
+    Icon: MonitorPlay,
+    title: "Rapid Replay Review Clinic",
+    body: "Fast-paced VOD clinic — one massive, high-impact insight per student replay.",
   },
-  { day: "Wednesday", short: "Wed" },
   {
     day: "Thursday",
-    short: "Thu",
-    event: {
-      Icon: Ticket,
-      title: "VOD Review Raffle",
-      body: "Win a comprehensive, full-length deep-dive gameplay analysis with Kajor.",
-    },
+    Icon: Ticket,
+    title: "VOD Review Raffle",
+    body: "Win a comprehensive, full-length deep-dive gameplay analysis with Kajor.",
   },
   {
     day: "Friday",
-    short: "Fri",
-    event: {
-      Icon: Dumbbell,
-      title: "Live Skill Bootcamp",
-      body: "Live group lesson isolating one competitive fundamental you can execute solo.",
-    },
+    Icon: Dumbbell,
+    title: "Live Skill Bootcamp",
+    body: "Live group lesson isolating one competitive fundamental you can execute solo.",
   },
   {
     day: "Saturday",
-    short: "Sat",
-    event: {
-      Icon: Gamepad2,
-      title: "Community PUGs",
-      body: "Moderated pick-up games for zero-stress practice with like-minded players.",
-    },
+    Icon: Gamepad2,
+    title: "Community PUGs",
+    body: "Moderated pick-up games for zero-stress practice with like-minded players.",
   },
-  { day: "Sunday", short: "Sun" },
 ];
 
-const anytime: Event = {
+const anytime = {
+  day: "Anytime",
   Icon: MessagesSquare,
-  title: "Direct Q&A Forum Support",
+  title: "Direct Q&A Forum Support with Kajor",
   body: "Drop clips or questions and get direct feedback from Kajor outside live hours.",
 };
 
@@ -69,62 +47,54 @@ export function WeekInAcademy() {
         A week in <span className="text-ow-orange">the Academy</span>.
       </Reveal>
 
-      {/* Desktop: 7-day calendar grid */}
-      <div className="mt-14 hidden gap-2.5 lg:grid lg:grid-cols-7">
-        {week.map(({ day, short, event }, i) => (
-          <Reveal
-            key={day}
-            delay={120 + i * 60}
-            y={14}
-            className={cn(
-              "flex min-h-[240px] flex-col rounded-ow-1 border",
-              event
-                ? "group relative border-ow-line2 bg-ow-bg2 shadow-[0_1px_2px_rgba(11,18,32,0.04)] transition-[transform,border-color,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:border-ow-orange hover:shadow-[0_22px_48px_-22px_rgba(249,158,26,0.45)]"
-                : "border-dashed border-ow-line2 bg-ow-bg1/60",
-            )}
-          >
-            {event && <HudCorners />}
-            <div
-              className={cn(
-                "border-b px-3.5 py-2.5 font-hud text-[10px]",
-                event
-                  ? "border-ow-line1 text-ow-orange"
-                  : "border-dashed border-ow-line1 text-ow-fg4",
-              )}
+      {/* Desktop: curriculum timeline — rail with day markers, one card per event */}
+      <div className="relative mt-16 hidden lg:block">
+        <div
+          aria-hidden
+          className="absolute left-0 right-0 top-[10px] h-px bg-ow-line2"
+        />
+        <div className="grid grid-cols-4 gap-5">
+          {events.map(({ day, Icon, title, body }, i) => (
+            <Reveal
+              key={day}
+              delay={120 + i * 80}
+              y={16}
+              className="flex flex-col"
             >
-              {day}
-            </div>
-            {event ? (
-              <div className="flex flex-1 flex-col p-3.5">
-                <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-ow-1 border border-ow-orange/30 bg-ow-orange/[0.08] text-ow-orange">
-                  <event.Icon className="h-[18px] w-[18px]" strokeWidth={1.75} />
+              <div className="mb-6 flex items-center gap-3">
+                <span className="relative flex h-[21px] w-[21px] flex-shrink-0 items-center justify-center rounded-full border border-ow-orange/50 bg-[var(--bg-0)]">
+                  <span className="h-[7px] w-[7px] rounded-full bg-ow-orange" />
+                </span>
+                {/* Opaque chip bg so the timeline rail doesn't show through the skewed shape */}
+                <span className="ow-chip inline-flex items-center rounded-ow-1 border border-ow-orange/40 bg-[color-mix(in_srgb,var(--ow-orange)_6%,var(--bg-0))] px-3 py-[5px] font-hud text-[11px] text-ow-orange">
+                  <span>{day}</span>
+                </span>
+              </div>
+              <div className="flex flex-1 flex-col rounded-ow-1 border border-ow-line2 bg-ow-bg2 p-6 shadow-[0_1px_2px_rgba(11,18,32,0.04)]">
+                <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-ow-1 border border-ow-orange/30 bg-ow-orange/[0.08] text-ow-orange">
+                  <Icon className="h-[22px] w-[22px]" strokeWidth={1.75} />
                 </div>
-                <div className="text-[15px] font-semibold leading-snug tracking-[-0.01em] text-ow-fg1">
-                  {event.title}
+                <div className="text-[17px] font-semibold leading-snug tracking-[-0.015em] text-ow-fg1">
+                  {title}
                 </div>
-                <p className="mt-2 text-[12px] leading-[1.5] text-ow-fg3">
-                  {event.body}
+                <p className="mt-2.5 text-sm leading-[1.55] text-ow-fg3">
+                  {body}
                 </p>
-                <span className="mt-auto flex items-center gap-1.5 pt-3 font-hud text-[9px] text-ow-fg4">
+                <span className="mt-auto flex items-center gap-1.5 pt-5 font-hud text-[9px] text-ow-fg4">
                   <span className="h-1.5 w-1.5 animate-pulseSoft rounded-full bg-ow-orange/70" />
                   Recorded
                 </span>
               </div>
-            ) : (
-              <div className="flex flex-1 items-center justify-center font-hud text-[10px] text-ow-fg4">
-                Free play
-              </div>
-            )}
-          </Reveal>
-        ))}
+            </Reveal>
+          ))}
+        </div>
       </div>
 
-      {/* Anytime bar — full width under the grid */}
-      <Reveal delay={120} y={14} className="mt-2.5 hidden lg:block">
-        <div className="group relative flex items-center gap-5 rounded-ow-1 border border-ow-line2 bg-ow-bg2 px-5 py-4 shadow-[0_1px_2px_rgba(11,18,32,0.04)] transition-[border-color,box-shadow] duration-300 ease-out hover:border-ow-orange hover:shadow-[0_22px_48px_-22px_rgba(249,158,26,0.45)]">
-          <HudCorners />
+      {/* Anytime bar — full width under the timeline */}
+      <Reveal delay={120} y={14} className="mt-5 hidden lg:block">
+        <div className="flex items-center gap-5 rounded-ow-1 border border-ow-line2 bg-ow-bg2 px-5 py-4 shadow-[0_1px_2px_rgba(11,18,32,0.04)]">
           <span className="ow-chip inline-flex items-center rounded-ow-1 border border-ow-orange/40 bg-ow-orange/[0.06] px-3 py-[5px] font-hud text-[11px] text-ow-orange">
-            <span>Anytime</span>
+            <span>{anytime.day}</span>
           </span>
           <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-ow-1 border border-ow-orange/30 bg-ow-orange/[0.08] text-ow-orange">
             <anytime.Icon className="h-[18px] w-[18px]" strokeWidth={1.75} />
@@ -146,29 +116,25 @@ export function WeekInAcademy() {
 
       {/* Mobile: vertical list */}
       <div className="mt-14 flex flex-col lg:hidden">
-        {[...week.filter((d) => d.event), { day: "Anytime", short: "Any", event: anytime }].map(
-          ({ day, event }, i) => (
-            <Reveal
-              key={day}
-              delay={120 + i * 70}
-              className="grid grid-cols-[96px_1fr] items-center gap-5 border-t border-ow-line1 py-6"
-            >
-              <div>
-                <span className="ow-chip inline-flex items-center rounded-ow-1 border border-ow-orange/40 bg-ow-orange/[0.06] px-3 py-[5px] font-hud text-[11px] text-ow-orange">
-                  <span>{day}</span>
-                </span>
+        {[...events, anytime].map(({ day, title, body }, i) => (
+          <Reveal
+            key={day}
+            delay={120 + i * 70}
+            className="grid grid-cols-[96px_1fr] items-center gap-5 border-t border-ow-line1 py-6"
+          >
+            <div>
+              <span className="ow-chip inline-flex items-center rounded-ow-1 border border-ow-orange/40 bg-ow-orange/[0.06] px-3 py-[5px] font-hud text-[11px] text-ow-orange">
+                <span>{day}</span>
+              </span>
+            </div>
+            <div>
+              <div className="text-[18px] font-semibold tracking-[-0.02em] text-ow-fg1">
+                {title}
               </div>
-              <div>
-                <div className="text-[18px] font-semibold tracking-[-0.02em] text-ow-fg1">
-                  {event!.title}
-                </div>
-                <p className="mt-1 text-sm leading-[1.5] text-ow-fg3">
-                  {event!.body}
-                </p>
-              </div>
-            </Reveal>
-          ),
-        )}
+              <p className="mt-1 text-sm leading-[1.5] text-ow-fg3">{body}</p>
+            </div>
+          </Reveal>
+        ))}
         <div className="border-t border-ow-line1" />
       </div>
 

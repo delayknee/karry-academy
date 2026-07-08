@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Play } from "lucide-react";
 import { CTAButton } from "./CTAButton";
 import { SectionMarker } from "./SectionMarker";
@@ -52,7 +53,19 @@ export function WhatIsAcademy() {
               />
             ) : (
               <>
-                <div className="video-tile-grid absolute inset-0 opacity-50" />
+                <Image
+                  src="/intro-poster.jpg"
+                  alt="What is The Karry Academy — video preview"
+                  fill
+                  sizes="(min-width: 1024px) 560px, 100vw"
+                  className="object-cover"
+                />
+                {/* Darken the poster so HUD labels and the play button stay legible */}
+                <div
+                  aria-hidden
+                  className="absolute inset-0 bg-gradient-to-b from-[#0B1220]/70 via-[#0B1220]/30 to-[#0B1220]/70"
+                />
+                <div className="video-tile-grid absolute inset-0 opacity-30" />
                 <span className="absolute left-3 top-3 font-hud text-[11px] text-ow-orange">
                   INTROREC // Karry Academy
                 </span>

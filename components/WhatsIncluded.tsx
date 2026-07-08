@@ -1,7 +1,6 @@
 import { Compass, Crosshair, ShieldCheck, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CTAButton } from "./CTAButton";
-import { HudCorners } from "./HudCorners";
 import { SectionMarker } from "./SectionMarker";
 import { Reveal } from "./Reveal";
 
@@ -106,21 +105,20 @@ export function WhatsIncluded() {
             delay={120 + i * 80}
             y={18}
             className={cn(
-              "group relative flex flex-col rounded-ow-1 border bg-ow-bg2 p-8 transition-[transform,border-color,box-shadow] duration-300 ease-out hover:-translate-y-1",
+              "relative flex flex-col rounded-ow-1 border bg-ow-bg2 p-8",
               featured
-                ? "border-ow-orange/60 shadow-[0_0_0_1px_rgba(249,158,26,0.25),0_24px_64px_-24px_rgba(249,158,26,0.5)] hover:border-ow-orange hover:shadow-[0_0_0_1px_rgba(249,158,26,0.35),0_28px_72px_-24px_rgba(249,158,26,0.6)] lg:-mt-6"
-                : "border-ow-line2 shadow-[0_1px_2px_rgba(11,18,32,0.04)] hover:border-ow-orange hover:shadow-[0_22px_48px_-22px_rgba(249,158,26,0.45)]",
+                ? "border-ow-orange/50 shadow-[0_12px_36px_-20px_rgba(249,158,26,0.35)] lg:-mt-6"
+                : "border-ow-line2 shadow-[0_1px_2px_rgba(11,18,32,0.04)]",
             )}
           >
-            <HudCorners visible={featured} />
             <div className="mb-6 flex items-center justify-between">
               <div
                 className={cn(
-                  "flex h-12 w-12 items-center justify-center rounded-ow-1 border bg-ow-orange/[0.08] text-ow-orange transition-[transform,border-color] duration-300 ease-out group-hover:-translate-y-0.5 group-hover:border-ow-orange/60",
+                  "flex h-12 w-12 items-center justify-center rounded-ow-1 border bg-ow-orange/[0.08] text-ow-orange",
                   featured ? "border-ow-orange/50" : "border-ow-orange/30",
                 )}
               >
-                <Icon className="h-6 w-6 transition-transform duration-300 ease-out group-hover:scale-110" strokeWidth={1.75} />
+                <Icon className="h-6 w-6" strokeWidth={1.75} />
               </div>
               <span className="font-hud text-[10px] tracking-[0.18em] text-ow-fg4">
                 Pillar {String(i + 1).padStart(2, "0")}
