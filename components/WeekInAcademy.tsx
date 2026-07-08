@@ -92,24 +92,21 @@ export function WeekInAcademy() {
 
       {/* Anytime bar — full width under the timeline */}
       <Reveal delay={120} y={14} className="mt-5 hidden lg:block">
-        <div className="flex items-center gap-5 rounded-ow-1 border border-ow-line2 bg-ow-bg2 px-5 py-4 shadow-[0_1px_2px_rgba(11,18,32,0.04)]">
-          <span className="ow-chip inline-flex items-center rounded-ow-1 border border-ow-orange/40 bg-ow-orange/[0.06] px-3 py-[5px] font-hud text-[11px] text-ow-orange">
-            <span>{anytime.day}</span>
-          </span>
-          <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-ow-1 border border-ow-orange/30 bg-ow-orange/[0.08] text-ow-orange">
-            <anytime.Icon className="h-[18px] w-[18px]" strokeWidth={1.75} />
+        <div className="flex items-center gap-4 rounded-ow-1 border border-ow-line2 bg-ow-bg2 px-6 py-5 shadow-[0_1px_2px_rgba(11,18,32,0.04)]">
+          <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-ow-1 border border-ow-orange/30 bg-ow-orange/[0.08] text-ow-orange">
+            <anytime.Icon className="h-[22px] w-[22px]" strokeWidth={1.75} />
           </div>
           <div className="min-w-0">
             <span className="text-[15px] font-semibold tracking-[-0.01em] text-ow-fg1">
               {anytime.title}
             </span>
-            <p className="text-[12px] leading-[1.5] text-ow-fg3">
+            <p className="mt-0.5 text-[13px] leading-[1.5] text-ow-fg3">
               {anytime.body}
             </p>
           </div>
-          <span className="ml-auto hidden items-center gap-1.5 font-hud text-[9px] text-ow-fg4 xl:flex">
+          <span className="ml-auto flex flex-shrink-0 items-center gap-1.5 font-hud text-[10px] text-ow-orange">
             <span className="h-1.5 w-1.5 animate-pulseSoft rounded-full bg-ow-orange/70" />
-            24/7
+            Anytime · 24/7
           </span>
         </div>
       </Reveal>
