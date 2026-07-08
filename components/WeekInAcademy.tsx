@@ -106,7 +106,7 @@ export function WeekInAcademy() {
           </div>
           <span className="ml-auto flex flex-shrink-0 items-center gap-1.5 font-hud text-[10px] text-ow-orange">
             <span className="h-1.5 w-1.5 animate-pulseSoft rounded-full bg-ow-orange/70" />
-            Anytime · 24/7
+            Anytime
           </span>
         </div>
       </Reveal>
