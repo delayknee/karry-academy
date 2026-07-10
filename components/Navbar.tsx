@@ -17,6 +17,7 @@ export function Navbar() {
   const [activeId, setActiveId] = useState<string>("");
   const [hoveredId, setHoveredId] = useState<string>("");
   const [scrolled, setScrolled] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   const navRef = useRef<HTMLElement>(null);
   const pillRef = useRef<HTMLSpanElement>(null);
@@ -26,6 +27,8 @@ export function Navbar() {
     const calc = () => {
       const y = window.scrollY;
       setScrolled(y > 8);
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(max > 0 ? Math.min(1, y / max) : 0);
 
       const threshold = window.innerHeight * 0.35;
       let current = "";
@@ -134,6 +137,7 @@ export function Navbar() {
           <CTAButton size="sm" location="nav">Get Access</CTAButton>
         </div>
       </div>
+      <span aria-hidden className="absolute bottom-[-1px] left-0 h-px bg-ow-orange transition-[width] duration-150 ease-out" style={{ width: `${progress * 100}%` }} />
     </header>
   );
 }

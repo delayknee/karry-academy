@@ -1,5 +1,7 @@
-import { Compass, Crosshair, ShieldCheck, Check } from "lucide-react";
-import { cn } from "@/lib/utils";
+"use client";
+
+import { useState } from "react";
+import { Compass, Crosshair, ShieldCheck, Check, ArrowRight, ChevronRight } from "lucide-react";
 import { CTAButton } from "./CTAButton";
 import { SectionMarker } from "./SectionMarker";
 import { Reveal } from "./Reveal";
@@ -7,160 +9,143 @@ import { Reveal } from "./Reveal";
 const pillars = [
   {
     Icon: Compass,
+    number: "01",
+    short: "Learn",
     title: "The Execution Blueprints",
-    focus: "Translating pro-level theory into solo-queue frameworks",
-    body: "Stop trying to force complex professional metas into uncoordinated ranked lobbies. Every month, we host live group lessons that isolate competitive fundamentals like pathing, space creation, and cooldown management. We give you clear, actionable rules you can execute entirely on your own, regardless of what your teammates are doing.",
+    focus: "Turn pro-level theory into solo-queue decisions",
+    body: "Stop forcing professional metas into uncoordinated ranked lobbies. The Academy isolates fundamentals like pathing, space creation, and cooldown management, then converts them into rules you can execute without relying on perfect teammates.",
+    outcome: "You enter every match with fewer things to remember and a much clearer idea of what good play looks like.",
     items: [
-      {
-        lead: "Live Interactive Masterclasses",
-        text: "Weekly deep dives breaking down concepts — how they work, why they work, and how you can make them work for yourself.",
-      },
-      {
-        lead: "The Academy Archive",
-        text: "Instant 24/7 access to every past lecture and strategy breakdown, catalogued with tags and a search function so you can learn at your own pace.",
-      },
-      {
-        lead: "Ranked Cheat Sheets",
-        text: "Actionable, weekly checklists to directly apply to your ranked games.",
-      },
+      { lead: "Live Masterclasses", text: "Weekly concept breakdowns with practical ranked examples." },
+      { lead: "Academy Archive", text: "Every past class, searchable and available on demand." },
+      { lead: "Ranked Cheat Sheets", text: "Simple focuses to take directly into your next queue." },
     ],
-    featured: false,
   },
   {
     Icon: Crosshair,
+    number: "02",
+    short: "Review",
     title: "The Feedback Loop",
-    focus: "Eliminating your blindspots via targeted assistance",
-    body: "You cannot fix a mistake you don't know you are making. Our feedback loop is designed to give you personalized direction without overwhelming you with information. By submitting your gameplay to our weekly review events, we cut through the noise to find the single biggest bad habit holding you back, leaving you with a clear objective for your next match.",
+    focus: "Find the blindspot that is actually holding you back",
+    body: "You cannot fix a mistake you cannot see. Weekly review events cut through the noise and identify the highest-impact habit in your gameplay, leaving you with one clear objective instead of an overwhelming list of corrections.",
+    outcome: "Every review ends with a specific practice target, so feedback turns into visible progress instead of forgotten notes.",
     items: [
-      {
-        lead: "Rapid-Fire Replay Reviews",
-        text: "Weekly fast-paced clinics designed to extract one massive, high-impact insight from multiple student VODs.",
-      },
-      {
-        lead: "The VOD Review Raffle",
-        text: "Weekly chances to win a comprehensive, full-length, deep-dive gameplay analysis with Kajor.",
-      },
-      {
-        lead: "Direct Coach Q&A Forum",
-        text: "A dedicated, text-based forum where you can drop clips or questions to get direct feedback outside of live event hours.",
-      },
+      { lead: "Rapid Replay Reviews", text: "One high-impact insight extracted from each submitted VOD." },
+      { lead: "VOD Review Raffle", text: "Weekly chances to receive a complete gameplay deep dive." },
+      { lead: "Direct Coach Q&A", text: "Drop clips and questions for feedback outside live events." },
     ],
-    featured: true,
   },
   {
     Icon: ShieldCheck,
+    number: "03",
+    short: "Practice",
     title: "The Environment",
-    focus: "Escaping solo-queue toxicity and practicing the right way",
-    body: "The public ranked ladder is plagued by toxic comms, throws, and players who don't care about winning. The Academy serves as an exclusive, mature environment where you can practice what you learn alongside like-minded players. Whether you're looking for a reliable duo to queue with or want to test your limits in private matches, this is where Overwatch is played the right way.",
+    focus: "Practice seriously without solo-queue toxicity",
+    body: "The Academy gives improvement-minded players a mature place to test new ideas. Find reliable teammates, join moderated practice games, and talk through the game with people who care about learning rather than blaming.",
+    outcome: "You get a safer place to experiment, fail, ask questions, and build the habits that ranked rarely lets you practice deliberately.",
     items: [
-      {
-        lead: "Private Academy PUGs",
-        text: "Moderated, internal pick-up games built purely for fun, mechanical practice, and zero-stress learning with like-minded players.",
-      },
-      {
-        lead: "Mature LFG Channel",
-        text: "Skip the public matchmaker lottery. Instantly find non-toxic, improvement-first teammates across all roles and ranks.",
-      },
-      {
-        lead: "Casual Office Hours",
-        text: "Regular, unscripted hangouts in voice channels to ask Kajor direct questions about meta updates and Overwatch advice alongside the community.",
-      },
+      { lead: "Private Academy PUGs", text: "Moderated games for focused, zero-stress practice." },
+      { lead: "Mature LFG", text: "Find non-toxic teammates across roles and ranks." },
+      { lead: "Casual Office Hours", text: "Discuss the meta and ask Kajor questions live." },
     ],
-    featured: false,
   },
 ];
 
 export function WhatsIncluded() {
+  const [active, setActive] = useState(0);
+  const pillar = pillars[active];
+  const ActiveIcon = pillar.Icon;
+
   return (
-    <section
-      id="included"
-      className="relative mx-auto max-w-[1280px] border-t border-ow-line1 px-6 py-24 lg:px-12 lg:py-[120px]"
-    >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-grid-soft"
-      />
-      <Reveal>
-        <SectionMarker n={3} title="How we help" />
-      </Reveal>
+    <section id="included" className="relative overflow-hidden border-t border-ow-line1">
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-grid-soft" />
+      <div className="mx-auto max-w-[1280px] px-6 py-24 lg:px-12 lg:py-[120px]">
+        <Reveal>
+          <SectionMarker n={3} title="How we help" />
+        </Reveal>
 
-      <Reveal as="h2" delay={60} className="max-w-[900px] font-display text-[40px] font-bold leading-none tracking-[-0.035em] text-ow-fg1 lg:text-[56px]">
-        The Karry Academy <span className="text-ow-orange">Framework</span>.
-      </Reveal>
-
-      <Reveal as="p" delay={120} className="mt-6 max-w-[760px] text-[17px] leading-[1.6] text-ow-fg2">
-        Most coaching platforms just throw a passive library of videos or
-        guides at you and wish you luck. Karry Academy is built on a
-        structured,{" "}
-        <strong className="font-semibold text-ow-fg1">
-          three-pillar system
-        </strong>{" "}
-        designed to translate game theory into real improvement.
-      </Reveal>
-
-      <div className="mt-16 grid items-start gap-5 lg:grid-cols-3">
-        {pillars.map(({ Icon, title, focus, body, items, featured }, i) => (
-          <Reveal
-            key={title}
-            delay={120 + i * 80}
-            y={18}
-            className={cn(
-              "relative flex flex-col rounded-ow-1 border bg-ow-bg2 p-8",
-              featured
-                ? "border-ow-orange/50 shadow-[0_12px_36px_-20px_rgba(249,158,26,0.35)] lg:-mt-6"
-                : "border-ow-line2 shadow-[0_1px_2px_rgba(11,18,32,0.04)]",
-            )}
-          >
-            <div className="mb-6 flex items-center justify-between">
-              <div
-                className={cn(
-                  "flex h-12 w-12 items-center justify-center rounded-ow-1 border bg-ow-orange/[0.08] text-ow-orange",
-                  featured ? "border-ow-orange/50" : "border-ow-orange/30",
-                )}
-              >
-                <Icon className="h-6 w-6" strokeWidth={1.75} />
-              </div>
-              <span className="font-hud text-[10px] tracking-[0.18em] text-ow-fg4">
-                Pillar {String(i + 1).padStart(2, "0")}
-              </span>
-            </div>
-            <h3 className="font-display text-2xl font-semibold tracking-[-0.025em] text-ow-fg1">
-              {title}
-            </h3>
-            <p className="mt-2 font-hud text-[11px] leading-[1.6] text-ow-orange">
-              {focus}
-            </p>
-            <p className="mt-4 mb-6 text-[15px] leading-relaxed text-ow-fg2">
-              {body}
-            </p>
-            <ul className="mt-auto flex flex-col gap-2.5">
-              {items.map(({ lead, text }) => (
-                <li
-                  key={lead}
-                  className="grid grid-cols-[16px_1fr] gap-3 border-t border-dashed border-ow-line1 pt-2.5 text-sm leading-[1.5] text-ow-fg2"
-                >
-                  <Check
-                    className="mt-0.5 h-3.5 w-3.5 text-ow-orange"
-                    strokeWidth={2.25}
-                  />
-                  <span>
-                    <strong className="font-semibold text-ow-fg1">
-                      {lead}:
-                    </strong>{" "}
-                    {text}
-                  </span>
-                </li>
-              ))}
-            </ul>
+        <div className="grid gap-8 lg:grid-cols-[1fr_0.75fr] lg:items-end">
+          <Reveal as="h2" delay={60} className="max-w-[760px] font-display text-[40px] font-bold leading-none tracking-[-0.035em] text-ow-fg1 lg:text-[56px]">
+            Improvement is a <span className="text-ow-orange">repeatable system</span>, not another video library.
           </Reveal>
-        ))}
-      </div>
+          <Reveal as="p" delay={110} className="max-w-[520px] text-[16px] leading-[1.65] text-ow-fg2 lg:pb-1">
+            Karry Academy connects learning, feedback, and deliberate practice so each part reinforces the next.
+          </Reveal>
+        </div>
 
-      <Reveal delay={80} className="mt-14 flex justify-center">
-        <CTAButton size="lg" location="framework">
-          Claim Your Spot ($14.99/mo)
-        </CTAButton>
-      </Reveal>
+        <Reveal delay={140} y={12} className="mt-12">
+          <div className="grid gap-2 rounded-ow-1 border border-ow-line2 bg-ow-bg1 p-2 sm:grid-cols-[1fr_auto_1fr_auto_1fr] sm:items-center">
+            {pillars.map((item, i) => (
+              <div key={item.title} className="contents">
+                <button
+                  type="button"
+                  onClick={() => setActive(i)}
+                  aria-pressed={active === i}
+                  className={`flex items-center gap-4 rounded-ow-1 border px-4 py-3.5 text-left outline-none transition-all duration-200 focus-visible:ring-2 focus-visible:ring-ow-orange ${active === i ? "border-ow-orange/45 bg-ow-orange/[0.09]" : "border-transparent hover:border-ow-line2 hover:bg-ow-bg2"}`}
+                >
+                  <span className={`font-display text-xl font-bold ${active === i ? "text-ow-orange" : "text-ow-fg4"}`}>{item.number}</span>
+                  <span>
+                    <span className="block text-sm font-semibold text-ow-fg1">{item.short}</span>
+                    <span className="mt-0.5 block font-hud text-[8px] text-ow-fg4">{item.title}</span>
+                  </span>
+                </button>
+                {i < 2 && <ArrowRight className="hidden h-4 w-4 text-ow-orange/60 sm:block" aria-hidden />}
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
+        <Reveal delay={170} y={16} className="mt-5 overflow-hidden rounded-ow-2 border border-ow-line2 bg-ow-bg2 shadow-[0_22px_70px_-48px_rgba(249,158,26,0.5)]">
+          <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="relative overflow-hidden border-b border-ow-line1 bg-ow-bg1 p-7 sm:p-10 lg:border-b-0 lg:border-r">
+              <div aria-hidden className="pointer-events-none absolute inset-0 bg-scanlines opacity-40" />
+              <div aria-hidden className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-ow-orange/10 blur-[90px]" />
+              <div className="relative">
+                <div className="flex items-center justify-between">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-ow-1 border border-ow-orange/40 bg-ow-orange/[0.09] text-ow-orange">
+                    <ActiveIcon className="h-7 w-7" strokeWidth={1.6} />
+                  </div>
+                  <span className="font-hud text-[9px] text-ow-fg4">Pillar // {pillar.number}</span>
+                </div>
+                <h3 className="mt-8 font-display text-[30px] font-semibold leading-tight tracking-[-0.035em] text-ow-fg1 sm:text-[36px]">{pillar.title}</h3>
+                <p className="mt-3 font-hud text-[10px] leading-[1.65] text-ow-orange">{pillar.focus}</p>
+                <p className="mt-6 text-[15px] leading-[1.7] text-ow-fg2">{pillar.body}</p>
+              </div>
+            </div>
+
+            <div className="flex flex-col p-7 sm:p-10">
+              <div className="font-hud text-[9px] text-ow-fg4">What members get</div>
+              <ul className="mt-4">
+                {pillar.items.map(({ lead, text }) => (
+                  <li key={lead} className="grid grid-cols-[24px_1fr] gap-3 border-b border-ow-line1 py-4 first:pt-2 last:border-b-0">
+                    <span className="mt-0.5 flex h-5 w-5 items-center justify-center rounded-full border border-ow-orange/35 bg-ow-orange/[0.08]">
+                      <Check className="h-3 w-3 text-ow-orange" strokeWidth={2.5} />
+                    </span>
+                    <span className="text-sm leading-[1.6] text-ow-fg2"><strong className="font-semibold text-ow-fg1">{lead}</strong> — {text}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-auto rounded-ow-1 border border-dashed border-ow-orange/30 bg-ow-orange/[0.05] p-5">
+                <div className="font-hud text-[8px] text-ow-orange">The outcome</div>
+                <p className="mt-2 text-sm leading-[1.6] text-ow-fg2">{pillar.outcome}</p>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setActive((active + 1) % pillars.length)}
+                className="mt-5 inline-flex items-center gap-2 self-start font-hud text-[9px] text-ow-fg3 outline-none transition-colors hover:text-ow-orange focus-visible:text-ow-orange"
+              >
+                Explore next pillar <ChevronRight className="h-3.5 w-3.5" />
+              </button>
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal delay={80} className="mt-12 flex justify-center">
+          <CTAButton size="lg" location="framework">Claim Your Spot ($14.99/mo)</CTAButton>
+        </Reveal>
+      </div>
     </section>
   );
 }
