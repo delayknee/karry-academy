@@ -3,15 +3,22 @@ import { CookieConsent } from "@/components/CookieConsent";
 import "./globals.css";
 
 const siteUrl = "https://karryacademy.com";
+const siteTitle =
+  "Stop Guessing. Start Climbing With a System. | Karry Academy";
+const siteDescription =
+  "Live Overwatch VOD reviews, focused group classes, and direct feedback from Kajor—built to help you understand why you lose and what to change next.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Karry Academy — Overwatch Coaching Community",
+    default: siteTitle,
     template: "%s | Karry Academy",
   },
-  description:
-    "Improve in Overwatch with Kajor, a top 1% coach. Join Karry Academy — a private community with weekly classes, VOD reviews, and access to a top coach. $14.99/month.",
+  description: siteDescription,
+  applicationName: "Karry Academy",
+  alternates: {
+    canonical: "/",
+  },
   keywords: [
     "Overwatch coaching",
     "Overwatch 2 coaching",
@@ -24,20 +31,19 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Kajor" }],
   creator: "Kajor",
+  publisher: "Karry Academy",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteUrl,
     siteName: "Karry Academy",
-    title: "Karry Academy — Overwatch Coaching Community",
-    description:
-      "Improve in Overwatch with Kajor, a top 1% coach. Weekly classes, VOD reviews, and a mature community. $14.99/month.",
+    title: siteTitle,
+    description: siteDescription,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Karry Academy — Overwatch Coaching Community",
-    description:
-      "Improve in Overwatch with Kajor, a top 1% coach. Weekly classes, VOD reviews, and a mature community.",
+    title: siteTitle,
+    description: siteDescription,
   },
   robots: {
     index: true,

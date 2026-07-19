@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { WhatIsAcademy } from "@/components/WhatIsAcademy";
-import { WhyRanked } from "@/components/WhyRanked";
+import { FightDecoder } from "@/components/FightDecoder";
 import { ForPlayers } from "@/components/ForPlayers";
 import { WhatsIncluded } from "@/components/WhatsIncluded";
 import { WeekInAcademy } from "@/components/WeekInAcademy";
@@ -13,9 +13,9 @@ import { Footer } from "@/components/Footer";
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Course",
-  name: "Karry Academy — Overwatch Coaching Community",
+  name: "Stop Guessing. Start Climbing With a System.",
   description:
-    "A private community with live weekly classes, coaching VODs and access to Kajor, a top 1% Overwatch coach.",
+    "Live Overwatch VOD reviews, focused group classes, and direct feedback from Kajor—built to help players understand why they lose and what to change next.",
   provider: {
     "@type": "Organization",
     name: "Karry Academy",
@@ -40,7 +40,7 @@ export default function Home() {
       <main>
         <Hero />
         <WhatIsAcademy />
-        <WhyRanked />
+        <FightDecoder />
         <WhatsIncluded />
         <ForPlayers />
         <WeekInAcademy />

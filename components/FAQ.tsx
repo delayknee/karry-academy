@@ -48,8 +48,10 @@ export function FAQ() {
   return (
     <section
       id="faq"
-      className="mx-auto max-w-[1280px] border-t border-ow-line1 px-6 py-24 lg:px-12 lg:py-[120px]"
+      className="faq-zone section-world relative overflow-hidden bg-ow-bg1"
     >
+      <div aria-hidden className="pointer-events-none absolute -left-32 top-1/3 h-[480px] w-[480px] rounded-full bg-ow-cyan/[0.08] blur-[130px]" />
+      <div className="site-shell section-block relative">
       <div className="grid gap-14 lg:grid-cols-[0.68fr_1.32fr] lg:gap-20">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <Reveal>
@@ -61,19 +63,6 @@ export function FAQ() {
           </Reveal>
           <Reveal as="p" delay={100} className="mt-6 max-w-[430px] text-[16px] leading-[1.65] text-ow-fg2">
             No contracts, hidden commitments, or impossible promises. Here are the practical details members ask about most.
-          </Reveal>
-
-          <Reveal delay={140} y={12} className="mt-9 grid grid-cols-3 overflow-hidden rounded-ow-1 border border-ow-line2 bg-ow-bg1">
-            {[
-              ["$14.99", "Monthly"],
-              ["14 days", "Refund"],
-              ["16+", "Community"],
-            ].map(([value, label]) => (
-              <div key={label} className="border-r border-ow-line1 px-3 py-4 text-center last:border-r-0">
-                <div className="font-display text-sm font-semibold text-ow-fg1">{value}</div>
-                <div className="mt-1 font-hud text-[7px] text-ow-fg4">{label}</div>
-              </div>
-            ))}
           </Reveal>
         </div>
 
@@ -124,6 +113,7 @@ export function FAQ() {
           })}
           <div className="border-t border-ow-line1" />
         </div>
+      </div>
       </div>
     </section>
   );

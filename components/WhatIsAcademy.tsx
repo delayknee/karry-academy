@@ -16,8 +16,12 @@ export function WhatIsAcademy() {
   return (
     <section
       id="about"
-      className="mx-auto max-w-[1280px] px-6 py-24 lg:px-12 lg:py-[120px]"
+      className="academy-intro section-world relative overflow-hidden bg-ow-bg1"
     >
+      <div aria-hidden className="pointer-events-none absolute -left-44 top-14 h-[460px] w-[460px] rounded-full bg-ow-cyan/[0.08] blur-[110px]" />
+      <div aria-hidden className="pointer-events-none absolute right-[-12%] top-[-20%] h-[540px] w-[540px] rounded-full bg-ow-orange/[0.12] blur-[130px]" />
+      <div aria-hidden className="blueprint-swoop pointer-events-none absolute inset-y-0 right-0 w-[54%] opacity-60" />
+      <div className="site-shell section-block relative">
       <Reveal>
         <SectionMarker n={1} title="What is Karry Academy" />
       </Reveal>
@@ -41,7 +45,7 @@ export function WhatIsAcademy() {
           </Reveal>
         </div>
 
-        <Reveal delay={120} y={18} className="overflow-hidden rounded-ow-2 border border-ow-line2 bg-ow-bg2 shadow-[0_4px_12px_rgba(11,18,32,0.06)]">
+        <Reveal delay={120} y={18} className="academy-video overflow-hidden rounded-[20px] border border-ow-line2 bg-ow-bg2 shadow-[0_28px_80px_-46px_rgba(37,99,235,0.5)]">
           <div className="video-tile relative flex aspect-video items-center justify-center">
             {playing ? (
               <iframe
@@ -99,15 +103,19 @@ export function WhatIsAcademy() {
               </>
             )}
           </div>
-          <div className="border-t border-ow-line1 px-5 py-5">
-            <div className="font-display text-xl font-semibold tracking-[-0.02em] text-ow-fg1">
-              What is The Karry Academy?
+          <div className="flex items-center justify-between gap-5 border-t border-ow-line1 px-5 py-5">
+            <div>
+              <div className="font-display text-xl font-semibold tracking-[-0.02em] text-ow-fg1">
+                Meet your improvement system
+              </div>
+              <div className="mt-1 font-hud text-[9px] text-ow-fg3">
+                1 min watch // start here
+              </div>
             </div>
-            <div className="mt-1 font-hud text-[11px] text-ow-fg3">
-              1 min watch
-            </div>
+            <span className="rounded-full border border-ow-cyan/25 bg-ow-cyan/[0.06] px-3 py-1.5 font-hud text-[8px] text-ow-cyan">Orientation</span>
           </div>
         </Reveal>
+      </div>
       </div>
     </section>
   );

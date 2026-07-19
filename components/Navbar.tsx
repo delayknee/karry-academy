@@ -7,9 +7,9 @@ import { CTAButton } from "./CTAButton";
 import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
-  { label: "About", id: "about" },
-  { label: "Included", id: "included" },
-  { label: "Testimonials", id: "testimonials" },
+  { label: "The Academy", id: "about" },
+  { label: "The Method", id: "included" },
+  { label: "Rank Climbs", id: "testimonials" },
   { label: "FAQ", id: "faq" },
 ];
 
@@ -17,7 +17,6 @@ export function Navbar() {
   const [activeId, setActiveId] = useState<string>("");
   const [hoveredId, setHoveredId] = useState<string>("");
   const [scrolled, setScrolled] = useState(false);
-  const [progress, setProgress] = useState(0);
 
   const navRef = useRef<HTMLElement>(null);
   const pillRef = useRef<HTMLSpanElement>(null);
@@ -27,8 +26,6 @@ export function Navbar() {
     const calc = () => {
       const y = window.scrollY;
       setScrolled(y > 8);
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(max > 0 ? Math.min(1, y / max) : 0);
 
       const threshold = window.innerHeight * 0.35;
       let current = "";
@@ -95,9 +92,10 @@ export function Navbar() {
       data-scrolled={scrolled}
       className="sticky top-0 z-50 border-b border-transparent bg-ow-bg0/55 backdrop-blur-xl transition-[background-color,border-color] duration-[320ms] ease-[cubic-bezier(0.23,1,0.32,1)] data-[scrolled=true]:border-ow-line1 data-[scrolled=true]:bg-ow-bg0/85"
     >
-      <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-6 px-6 py-3 lg:px-12">
+      <div className="site-shell flex items-center justify-between gap-3 !px-4 py-3 sm:gap-6 sm:!px-6 lg:!px-12">
         <Link href="/" aria-label="Karry Academy home" className="shrink-0">
-          <Wordmark size={22} />
+          <span className="sm:hidden"><Wordmark size={17} /></span>
+          <span className="hidden sm:inline"><Wordmark size={22} /></span>
         </Link>
 
         <nav
@@ -134,10 +132,9 @@ export function Navbar() {
 
         <div className="flex items-center gap-2.5">
           <ThemeToggle />
-          <CTAButton size="sm" location="nav">Get Access</CTAButton>
+          <CTAButton size="sm" location="nav" className="nav-cta">Get Access</CTAButton>
         </div>
       </div>
-      <span aria-hidden className="absolute bottom-[-1px] left-0 h-px bg-ow-orange transition-[width] duration-150 ease-out" style={{ width: `${progress * 100}%` }} />
     </header>
   );
 }
